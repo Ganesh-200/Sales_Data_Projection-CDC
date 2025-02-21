@@ -6,10 +6,24 @@ This project implements a Change Data Capture (CDC) pipeline to track and analyz
 ## Prerequisites
 AWS CLI installed in local machine
 boto3 library installed in local machine
-## STEPS
+## Configuration 
 ### 1.DynamoDB
-Create a DynamoDB table with CDC enabled
-```ini
+Create a DynamoDB table with CDC enabled to store incoming mock data.
+```
 partition key:'orderid'
 view type:'New image'
 ```
+### Amazon EventBridge Pipes
+Create a EventBridge pipe to create point-to-point integrations between event producers and consumers
+```
+PIPE Config
+Source:DynamoDB
+Target:Kinesis
+partition key:'$.eventid'
+
+IAM ROLES
+1. dynamoDBFullAccess
+2. AmazonkinesisFullAccess
+```
+### Kinesis
+Create Kinesis data stream to stream data from DynamoDB table.
