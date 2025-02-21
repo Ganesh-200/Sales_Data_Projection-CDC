@@ -9,7 +9,7 @@ boto3 library installed in local machine
 ## STEPS
 ### 1.DynamoDB
 Create a DynamoDB table with CDC enabled
-```
+```ini
 partition key:'orderid'
 view type:'New image'
 ```
