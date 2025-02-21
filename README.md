@@ -1,6 +1,16 @@
 # CDC in sales data
 ## Overview
 This project implements a Change Data Capture (CDC) pipeline to track and analyze sales data in real-time. It captures changes from source databases, processes the data, and projects insights for business decision-making.
+## Features
+✅ CDC Implementation – Captures inserts, updates, and deletes from the sales database
+✅ Data Pipeline – Processes and stores data in a scalable architecture
+✅ AWS Services Used – DynamoDB, Kinesis, EventBridge, S3, Glue, Lambda, Athena.
+✅ Real-Time & Batch Processing – Supports real-time event-driven workflows and scheduled data processing
+## Tech Stack
+🔹 AWS (Kinesis, DynamoDB, Athena, Glue, Lambda, EventBridge, S3)
+🔹 Apache Spark / AWS Glue for data transformation
+🔹 Python (Boto3, Pandas, PySpark)
+🔹 SQL (Athena)
 ## Workflow
 ![Sales_Data-CDC](https://github.com/user-attachments/assets/c06bd4a5-fcb0-47a8-ac8c-d3520844c082)
 ## Prerequisites
