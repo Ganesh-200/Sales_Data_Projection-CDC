@@ -36,11 +36,43 @@ Create a Firehose stream to processes and deliver streaming data to destinations
 FIREHOSE Config
 source:kinesis stream
 destination:Amazon S3
-Kinesis data stream:arn:aws:kinesis:[Region]:[AccountId]:stream/[StreamName]
-lambda:arn:aws:lambda:[Region]:[AccountId]:function:lambda_transformer.py
-File extension format:.json
+Kinesis data stream:'arn:aws:kinesis:[Region]:[AccountId]:stream/[StreamName]'
+lambda:'arn:aws:lambda:[Region]:[AccountId]:function:lambda_transformer.py'
+File extension format:'.json'
 
 IAM ROLES
 1. kinesisFullAccess
 2. S3FullAccess
 ```
+### AWS Glue
+#### Classifiers
+Create a classifier to classify data based on type and path.
+```
+type:JSON
+path:'$.orderID,$.product_name,$.quantity,$.price,$.event_type,$.creation_time'
+```
+#### database
+Create a database to store crawled data's metadata.
+#### crawler
+Create a crawler to crawl the output data stored in S3 location.
+```
+Data source:S3
+database:Glue database
+custom classifier:glue classifier
+
+IAM ROLES
+1. S3FullAccess
+2. GlueFullAccess
+```
+### Athena
+```
+database:Glue database
+queries:some select queris based on the modification
+        (ex:SELECT * FROM glue_table WHERE product_name='laptop';
+            SELECT * FROM glue_table WHERE product_name='laptop' AND quantity=5;)
+```
+## How to Run
+1. Run dynamodb_mock_data_gen.py from the terminal of the local machine to ingest mock data to stream, process and store in S3 location.
+2. Run the crawler to crawl the stored data in S3.
+3. To check CDC is getting captured or not, mopdify any table item in DynamoDB table and see in athena by running same select queries before the modification and after the modification.
+
