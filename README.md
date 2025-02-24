@@ -1,4 +1,5 @@
 # CDC in sales data
+### Change Data Capture Pipeline using Kinesis, Glue and Lambda
 ## Overview
 This project implements a Change Data Capture (CDC) pipeline to track and analyze sales data in real-time. It captures changes from source databases, processes the data, and projects insights for business decision-making.
 ## Features
@@ -56,12 +57,12 @@ IAM ROLES
 ```
 ### AWS Glue
 #### Classifiers
-Create a classifier to classify data based on type and path.
+Create a custom classifier to classify data based on type and path.
 ```
 type:JSON
 path:'$.orderID,$.product_name,$.quantity,$.price,$.event_type,$.creation_time'
 ```
-#### database
+#### Catalog database
 Create a database to store crawled data's metadata.
 #### crawler
 Create a crawler to crawl the output data stored in S3 location.
