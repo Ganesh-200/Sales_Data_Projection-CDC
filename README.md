@@ -1,5 +1,7 @@
 # CDC in sales data
 ### Change Data Capture Pipeline using Kinesis, Glue and Lambda
+![image](https://github.com/user-attachments/assets/1ca51815-c3e5-45c3-869e-95a57404fad4)
+
 ## Overview
 This project implements a Change Data Capture (CDC) pipeline to track and analyze sales data in real-time. It captures changes from source databases, processes the data, and projects insights for business decision-making.
 ## Features
